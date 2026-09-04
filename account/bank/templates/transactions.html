@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Transactions - Bank App{% endblock %}
+{% block content %}
+<div class="card">
+    <h1>Transaction History</h1>
+    {% if transactions %}
+    <label>
+        <tr><th>Date</th><th>Type</th><th>Description</th><th>Amount</th><th>Balance</th></tr>
+        {% for t in transactions %}
+        <tr>
+            <td>{{ t.timestamp|date:"M d, Y H:i" }}</td>
+            <td>{{ t.get_transaction_type_display }}</td>
+            <td>{{ t.description }}</td>
+            <td class="{% if t.transaction_type == 'DEPOSIT' or t.transaction_type == 'TRANSFER_IN' %}amount-in{% else %}amount-out{% endif %}">
+                {% if t.transaction_type == 'DEPOSIT' or t.transaction_type == 'TRANSFER_IN' %}+{% else %}-{% endif %}${{ t.amount }}
+            </td>
+            <td>${{ t.balance_after }}</td>
+        </tr>
+        {% endfor %}
+    </label>
+    {% else %}
+    <p class="muted">No transactions yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

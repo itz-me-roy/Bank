@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Transfer - Bank App{% endblock %}
+{% block content %}
+<div class="card">
+    <h1>Transfer Funds</h1>
+    <p class="muted">Your Account Number: {{ account.account_number }}</p>
+    <p class="muted">Current Balance: ${{ account.balance }}</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Transfer</button>
+    </form>
+</div>
+{% endblock %}
