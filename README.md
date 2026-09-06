@@ -16,11 +16,17 @@ accounts by account number, and view a full transaction history.
 ## Project layout
 
 ```
-bank_app/
+.vscode/
+├── settings.json
+account/
 ├── manage.py
-├── requirements.txt
-├── bank_app/          # project settings, urls
-└── banking/           # the banking app (models, views, templates)
+├── account/          # project settings, urls
+|   ├── __init__.py
+|   ├── asgi.py
+|   ├── settings.py
+|   ├── urlspy
+|   └── wsgi.py
+└── bank/           # the bank app (models, views, templates)
     ├── models.py       # Account, Transaction
     ├── views.py
     ├── forms.py
@@ -40,11 +46,12 @@ bank_app/
 
 2. **Install dependencies**
    ```bash
-   pip install -r requirements.txt
+   pip install django
    ```
 
 3. **Apply migrations**
    ```bash
+   python manage.py makemigrations
    python manage.py migrate
    ```
 
