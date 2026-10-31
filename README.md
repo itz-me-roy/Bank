@@ -42,30 +42,26 @@ account/
    ```bash
    python -m venv venv
    source venv/bin/activate   # Windows: venv\Scripts\activate
+   python -m pip install -r account/requirements.txt
    ```
 
-2. **Install dependencies**
-   ```bash
-   pip install django
-   ```
-
-3. **Apply migrations**
+2. **Apply migrations**
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
 
-4. **Create a superuser (optional, for /admin/)**
+3. **Create a superuser (optional, for /admin/)**
    ```bash
    python manage.py createsuperuser
    ```
 
-5. **Run the development server**
+4. **Run the development server**
    ```bash
    python manage.py runserver
    ```
 
-6. Visit `http://127.0.0.1:8000/` to sign up and start banking, or
+5. Visit `http://127.0.0.1:8000/` to sign up and start banking, or
    `http://127.0.0.1:8000/admin/` to manage data as a superuser.
 
 ## Notes for production use
